@@ -2,12 +2,10 @@ package com.projetoDevOps.ItemStockAPI.product.service;
 
 import com.projetoDevOps.ItemStockAPI.product.model.Product;
 import com.projetoDevOps.ItemStockAPI.product.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

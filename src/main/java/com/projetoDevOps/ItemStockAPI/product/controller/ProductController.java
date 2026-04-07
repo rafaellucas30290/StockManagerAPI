@@ -2,6 +2,7 @@ package com.projetoDevOps.ItemStockAPI.product.controller;
 
 import com.projetoDevOps.ItemStockAPI.product.model.Product;
 import com.projetoDevOps.ItemStockAPI.product.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,12 +12,8 @@ import java.util.List;
 @RequestMapping("/produtos")
 public class ProductController {
 
-
-    private final ProductService service;
-
-    public ProductController(ProductService service) {
-        this.service = service;
-    }
+    @Autowired
+    private ProductService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -43,7 +40,7 @@ public class ProductController {
     }
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public Product update(@RequestBody Product product){
+    public Product updateProduct(@RequestBody Product product){
         return service.updateProduct(product);
     }
 
