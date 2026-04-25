@@ -12,7 +12,7 @@ services:
       - "5432:5432"
 
   api:
-    build: .
+    build: ./back-end
     container_name: itemstock-api
     ports:
       - "8080:8080"
