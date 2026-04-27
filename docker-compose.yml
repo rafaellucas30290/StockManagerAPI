@@ -1,23 +1,35 @@
 version: "3.9"
 
 services:
-  front-end:
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: itemstock
+    ports:
+      - "5432:5432"
+
+  web:
     build:
       context: ./front-end
       dockerfile: Dockerfile
     container_name: stockmanager_frontend
     ports:
-      - "80:80"
+      - "3000:80"
     depends_on:
       - back-end
     networks:
       - stockmanager_network
 
-  back-end:
+  api:
     build:
       context: ./back-end
       dockerfile: Dockerfile
     container_name: stockmanager_backend
+    depends_on:
+      - postgres
     ports:
       - "8080:8080"
     networks:
